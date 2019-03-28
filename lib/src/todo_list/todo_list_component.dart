@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
-import 'package:firebase/firebase.dart';
 
 import 'todo_list_service.dart';
+import '../models/resource.dart';
 
 @Component(
   selector: 'todo-list',
@@ -23,26 +23,20 @@ import 'todo_list_service.dart';
 class TodoListComponent implements OnInit {
   final TodoListService todoListService;
 
-  List<String> items = [];
-  String newTodo = '';
+  List<Resource> items = [];
+  String newUrl = '';
 
-  TodoListComponent(this.todoListService) {
-    firestore().collection("resources").get().then((snapshot) {
-      snapshot.forEach((doc) {
-        items.add(doc.data()["title"]);
-      });
-    });
-  }
+  TodoListComponent(this.todoListService);
 
   @override
   Future<Null> ngOnInit() async {
-    items = await todoListService.getTodoList();
+    items = await todoListService.getResourcesList();
   }
 
   void add() {
-    items.add(newTodo);
-    newTodo = '';
+    items.add(Resource('new', newUrl));
+    newUrl = '';
   }
 
-  String remove(int index) => items.removeAt(index);
+  Resource remove(int index) => items.removeAt(index);
 }

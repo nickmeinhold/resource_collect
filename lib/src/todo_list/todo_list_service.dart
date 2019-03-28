@@ -1,11 +1,20 @@
 import 'dart:async';
 
 import 'package:angular/core.dart';
+import 'package:firebase/firebase.dart';
 
-/// Mock service emulating access to a to-do list stored on a server.
+import '../models/resource.dart';
+
+/// 
 @Injectable()
 class TodoListService {
-  List<String> mockTodoList = <String>[];
 
-  Future<List<String>> getTodoList() async => mockTodoList;
+  Future<List<Resource>> getResourcesList() async {
+    List<Resource> resources = List();
+    var snapshot = await firestore().collection("resources").get();
+    snapshot.forEach((doc) {
+      resources.add(Resource(doc.data()["title"], doc.data()["url"]));
+    });
+    return resources;
+  }
 }
