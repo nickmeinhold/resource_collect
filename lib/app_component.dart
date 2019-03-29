@@ -83,6 +83,7 @@ class AppComponent {
   bool isAuthenticated() => firebase.auth().currentUser != null;
   String get userEmail => firebase.auth().currentUser?.email;
   String get displayName => firebase.auth().currentUser?.displayName;
+  String get photoURL => firebase.auth().currentUser?.photoURL;
   Map<String, dynamic> get userJson => firebase.auth().currentUser?.toJson();
 
   // If the provider gave us an access token, we put it here.
