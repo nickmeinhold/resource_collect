@@ -16,7 +16,6 @@ import 'package:firebase/src/interop/firebase_interop.dart';
   directives: const [TodoListComponent, NgIf, FirebaseAuthUIComponent],
 )
 class AppComponent {
-  
   UIConfig _uiConfig;
 
   Future<Null> logout() async {
@@ -24,16 +23,16 @@ class AppComponent {
     providerAccessToken = "";
   }
 
-
   // todo: We need to create a nicer wrapper for the sign in callbacks.
-  PromiseJsImpl<void>  signInFailure(AuthUIError authUiError) {
+  PromiseJsImpl<void> signInFailure(AuthUIError authUiError) {
     // nothing to do;
-    return new PromiseJsImpl<void>( () => print("SignIn Failure"));
+    return new PromiseJsImpl<void>(() => print("SignIn Failure"));
   }
 
   // Example SignInSuccess callback handler
   bool signInSuccess(firebase.UserCredential authResult, String redirectUrl) {
-    print("sign in  success. ProviderID =  ${authResult.credential.providerId}");
+    print(
+        "sign in  success. ProviderID =  ${authResult.credential.providerId}");
     print("Info= ${authResult.additionalUserInfo}");
 
     // returning false gets rid of the double page load (no need to redirect to /)
@@ -56,13 +55,10 @@ class AppComponent {
           // See https://developer.github.com/apps/building-oauth-apps/scopes-for-oauth-apps/
           scopes: [/*'repo', 'gist' */]);
 
-
       var callbacks = new Callbacks(
           uiShown: () => print("UI shown callback"),
           signInSuccessWithAuthResult: allowInterop(signInSuccess),
-          signInFailure: signInFailure
-      );
-
+          signInFailure: signInFailure);
 
       _uiConfig = new UIConfig(
           signInSuccessUrl: '/',
@@ -88,5 +84,4 @@ class AppComponent {
 
   // If the provider gave us an access token, we put it here.
   String providerAccessToken = "";
-
 }
