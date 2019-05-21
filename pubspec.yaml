@@ -8,15 +8,15 @@ environment:
   sdk: '>=2.1.0 <3.0.0'
 
 dependencies:
-  angular: ^5.2.0
-  angular_components: ^0.11.0
-  firebase: ^5.0.0
-  firebase_dart_ui: ^0.1.1
+  angular: any
+  angular_components: any
+  firebase: any
+  firebase_dart_ui: any
 
 dev_dependencies:
-  angular_test: ^2.2.0
-  build_runner: ^1.1.2
-  build_test: ^0.10.3
-  build_web_compilers: ^1.0.0
-  pedantic: ^1.0.0
-  test: ^1.5.1
+  sass_builder: any
+  angular_test: any
+  build_runner: any
+  build_test: any
+  build_web_compilers: '>=1.0.0 <2.0.0'
+  test: any

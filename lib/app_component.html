@@ -1,3 +1,6 @@
+<img *ngIf="isAuthenticated()" src="{{photoURL}}" class="rounded">
+<button *ngIf="isAuthenticated()" (click)="logout()">Sign Out</button>
+
 <h1>Resource Collect</h1>
 
 <div *ngIf="!isAuthenticated()">
