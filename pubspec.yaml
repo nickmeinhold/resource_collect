@@ -1,22 +1,30 @@
 name: resource_collect
-description: A web app that uses AngularDart Components
-# version: 1.0.0
-# homepage: https://www.example.com
-# author: Nick Meinhold <email@example.com>
+description: Collect your resources - built with Flutter for web
 
 environment:
-  sdk: '>=2.1.0 <3.0.0'
+  # You must be using Flutter >=1.5.0 or Dart >=2.3.0
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
-  angular: any
-  angular_components: any
+  flutter_web: any
+  flutter_web_ui: any
   firebase: any
   firebase_dart_ui: any
 
 dev_dependencies:
-  sass_builder: any
-  angular_test: any
   build_runner: any
-  build_test: any
-  build_web_compilers: '>=1.0.0 <2.0.0'
-  test: any
+  build_web_compilers: any
+
+dependency_overrides:
+  flutter_web:
+    git:
+      url: https://github.com/flutter/flutter_web
+      path: packages/flutter_web
+  flutter_web_ui:
+    git:
+      url: https://github.com/flutter/flutter_web
+      path: packages/flutter_web_ui
+  flutter_web_test:
+    git:
+      url: https://github.com/flutter/flutter_web
+      path: packages/flutter_web_test
